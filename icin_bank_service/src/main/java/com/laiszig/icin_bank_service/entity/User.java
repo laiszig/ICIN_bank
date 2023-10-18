@@ -28,6 +28,4 @@ public class User {
 
     private String email;
 
-    private Role role;
-
 }
