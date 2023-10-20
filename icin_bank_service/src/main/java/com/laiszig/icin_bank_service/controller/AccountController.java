@@ -22,7 +22,8 @@ public class AccountController {
 //    }
 
     @PostMapping("/account/search")
-    public Account searchAccountByPincode(@RequestBody AccountRequest accountRequest) {
+    public Account searchAccountByNumber(@RequestBody AccountRequest accountRequest) {
         return accountService.getAccountByNumber(accountRequest.getAccountNumber());
     }
+
 }
