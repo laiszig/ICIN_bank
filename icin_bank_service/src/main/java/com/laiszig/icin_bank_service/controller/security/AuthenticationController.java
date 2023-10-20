@@ -1,5 +1,8 @@
-package com.laiszig.icin_bank_service.security;
+package com.laiszig.icin_bank_service.controller.security;
 
+import com.laiszig.icin_bank_service.controller.request.UserRequest;
+import com.laiszig.icin_bank_service.security.*;
+import com.laiszig.icin_bank_service.service.security.JwtUserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

@@ -1,5 +1,6 @@
 package com.laiszig.icin_bank_service.security;
 
+import com.laiszig.icin_bank_service.service.security.JwtUserDetailsService;
 import io.jsonwebtoken.ExpiredJwtException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

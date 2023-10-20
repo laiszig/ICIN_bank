@@ -16,16 +16,18 @@ import javax.persistence.*;
 public class User {
 
     @Id
+    @Column(name = "user_id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column
+    @Column (name = "username")
     private String username;
 
-    @Column
+    @Column(name = "user_password")
     @JsonIgnore
     private String password;
 
+    @Column(name = "user_email")
     private String email;
 
 }

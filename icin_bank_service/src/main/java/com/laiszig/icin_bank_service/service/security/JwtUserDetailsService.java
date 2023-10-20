@@ -1,5 +1,6 @@
-package com.laiszig.icin_bank_service.security;
+package com.laiszig.icin_bank_service.service.security;
 
+import com.laiszig.icin_bank_service.controller.request.UserRequest;
 import com.laiszig.icin_bank_service.entity.User;
 import com.laiszig.icin_bank_service.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;

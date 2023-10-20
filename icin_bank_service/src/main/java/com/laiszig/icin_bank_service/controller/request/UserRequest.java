@@ -1,4 +1,4 @@
-package com.laiszig.icin_bank_service.security;
+package com.laiszig.icin_bank_service.controller.request;
 
 import lombok.Data;
 
