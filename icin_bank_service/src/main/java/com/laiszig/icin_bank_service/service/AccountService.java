@@ -20,14 +20,13 @@ public class AccountService {
         return accountRepository.findAll();
     }
 
-    public Account getAccountByNumber (Long accNumber) {
+    public Account getAccountByNumber (String accNumber) {
         return accountRepository.findAccountByAccountNumber(accNumber);
     }
 
     public Account createAccount(Account account) {
         CodeGenerator codeGenerator = new CodeGenerator();
-        Account newAccount = new Account();
-        newAccount.setAccountNumber(codeGenerator.generateAccountNumber());
-        return accountRepository.save(newAccount);
+        account.setAccountNumber(codeGenerator.generateAccountNumber());
+        return accountRepository.save(account);
     }
 }

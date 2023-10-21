@@ -7,7 +7,7 @@ import lombok.Data;
 public class AccountRequest {
 
     private Long userId;
-    private Long accountNumber;
+    private String accountNumber;
     private Long balance;
     private String accountType;
 }
