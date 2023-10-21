@@ -23,13 +23,17 @@ public class Account {
     private User user;
 
     @Column(name = "account_number")
-    private Long accountNumber;
+    private String accountNumber;
 
     @Column(name = "account_balance")
     private Long balance;
 
     @Column(name = "account_type")
     private String accountType;
+
+    @Enumerated(EnumType.STRING)
+    @Column(name = "STATUS")
+    private Status status;
 
 
 }

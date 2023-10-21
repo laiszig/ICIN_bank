@@ -6,8 +6,7 @@ import lombok.Data;
 @Data
 public class AccountRequest {
 
-    private Long id;
-    private User user;
+    private Long userId;
     private Long accountNumber;
     private Long balance;
     private String accountType;
