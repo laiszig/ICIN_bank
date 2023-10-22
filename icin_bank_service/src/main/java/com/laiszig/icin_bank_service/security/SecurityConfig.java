@@ -66,9 +66,9 @@ public class SecurityConfig  {
 
         httpSecurity.csrf().disable()
                 .cors().and()
-                .authorizeRequests().antMatchers("/authenticate", "/register",
-                        "/**").permitAll()
-//                .antMatchers("/addshowtime", "/addmovie").hasRole("ADMIN")
+                .authorizeRequests()
+                .antMatchers("/authenticate", "/register").permitAll()
+//                .antMatchers("/account/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).and().sessionManagement()

@@ -7,6 +7,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Data
 @Entity
@@ -23,11 +24,17 @@ public class User {
     @Column (name = "username")
     private String username;
 
-    @Column(name = "user_password")
+    @Column(name = "password")
     @JsonIgnore
     private String password;
 
     @Column(name = "user_email")
     private String email;
+
+    @OneToOne
+    @JoinColumn(name = "role_name")
+    private Role role;
+
+    private Boolean enabled;
 
 }
