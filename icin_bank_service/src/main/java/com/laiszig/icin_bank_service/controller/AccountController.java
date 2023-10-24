@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Map;
 
 @RestController
 public class AccountController {
@@ -39,9 +40,27 @@ public class AccountController {
         account.setAccountType(accountRequest.getAccountType());
         account.setUser(userService.findUser(accountRequest.getUserId()));
         account.setStatus(Status.OPEN);
-        account.setBalance(0L);
+        account.setBalance(0.0);
         accountService.createAccount(account);
-        return new ResponseEntity<>("Account created successfully", HttpStatus.OK);
 
+        return new ResponseEntity<>("Account created successfully", HttpStatus.OK);
     }
+
+    @GetMapping("/{id}")
+    public Account getAccount(@PathVariable Long id) {
+        return accountService.getAccount(id).orElseThrow(() -> new RuntimeException("Account not found"));
+    }
+
+    @PostMapping("account/{id}/deposit")
+    public Account deposit(@PathVariable Long id, @RequestBody Map<String, Double> request) {
+        Double amount = request.get("amount");
+        return accountService.deposit(id, amount);
+    }
+
+    @PostMapping("account/{id}/withdraw")
+    public Account withdraw(@PathVariable Long id, @RequestBody Map<String, Double> request) {
+        Double amount = request.get("amount");
+        return accountService.withdraw(id, amount);
+    }
+
 }
