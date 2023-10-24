@@ -46,7 +46,7 @@ public class AccountController {
         return new ResponseEntity<>("Account created successfully", HttpStatus.OK);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("account/{id}")
     public Account getAccount(@PathVariable Long id) {
         return accountService.getAccount(id).orElseThrow(() -> new RuntimeException("Account not found"));
     }
