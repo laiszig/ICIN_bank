@@ -50,8 +50,6 @@ public class AuthenticationController {
             throw new Exception("USER_DISABLED", e);
         } catch (BadCredentialsException e) {
             throw new Exception("INVALID_CREDENTIALS", e);
-        } catch ( Exception ex) {
-            ex.printStackTrace();
         }
     }
 }

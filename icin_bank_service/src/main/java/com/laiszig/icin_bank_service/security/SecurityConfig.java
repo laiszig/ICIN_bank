@@ -1,6 +1,5 @@
 package com.laiszig.icin_bank_service.security;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -19,10 +18,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 
 import javax.sql.DataSource;
 
-
 @Configuration
 @EnableWebSecurity
-
 public class SecurityConfig  {
 
     @Autowired
@@ -68,7 +65,6 @@ public class SecurityConfig  {
                 .cors().and()
                 .authorizeRequests()
                 .antMatchers("/authenticate", "/register").permitAll()
-//                .antMatchers("/account/**").hasRole("ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).and().sessionManagement()

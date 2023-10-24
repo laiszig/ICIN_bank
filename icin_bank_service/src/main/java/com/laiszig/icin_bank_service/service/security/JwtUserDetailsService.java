@@ -29,21 +29,11 @@ public class JwtUserDetailsService implements UserDetailsService {
     private RoleRepository roleRepository;
 
 
-//    @Override
-//    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-//        return Optional.ofNullable(userRepository.findByUsername(username))
-//                .map(user -> new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),new ArrayList<>()))
-//                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
-//    }
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-
-        User user = userRepository.findByUsername(username);
-        if (user == null) {
-            throw new UsernameNotFoundException("User not found");
-        }
-        return new UserDetailsImpl(user);
+        return Optional.ofNullable(userRepository.findByUsername(username))
+                .map(userEntity -> new org.springframework.security.core.userdetails.User(userEntity.getUsername(), userEntity.getPassword(),new ArrayList<>()))
+                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
     }
 
     public User save(UserRequest user) {
