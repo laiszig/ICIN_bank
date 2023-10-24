@@ -4,8 +4,6 @@ import com.laiszig.icin_bank_service.controller.request.UserRequest;
 import com.laiszig.icin_bank_service.entity.User;
 import com.laiszig.icin_bank_service.repository.RoleRepository;
 import com.laiszig.icin_bank_service.repository.UserRepository;
-import com.laiszig.icin_bank_service.security.Role;
-import com.laiszig.icin_bank_service.security.UserDetailsImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

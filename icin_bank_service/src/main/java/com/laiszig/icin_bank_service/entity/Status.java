@@ -6,7 +6,10 @@ import lombok.Getter;
 public enum Status {
 
     OPEN("OPEN"),
-    CLOSED("CLOSED");
+    APPROVED("APPROVED"),
+    CLOSED("CLOSED"),
+    DENIED("DENIED");
+
 
     private final String description;
 
