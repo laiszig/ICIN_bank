@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import { Account } from './Account';
 
 @Injectable({
@@ -20,4 +20,13 @@ export class AccountService {
       return result;
     }));
   }
+
+  //get all tickets
+  getAllAccounts(): Observable<Account[]> {
+    return this.httpClient.get<Account[]>(this.url + "/account");
+  }
+
+  // getTicketsByStatus(id: any): Observable<Account[]> {
+  //   return this.http.post<Account[]>(this.url + "/ticket/status", {"status" : Status})
+  // }
 }

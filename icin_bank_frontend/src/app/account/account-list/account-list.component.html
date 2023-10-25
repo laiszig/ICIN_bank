@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ICIN Bank - Account List</title>
+</head>
+<body>
+    <div class="container">
+        <h2 class="list-account-title">Accounts</h2>
+
+        <div class="row">
+            <div class="col-md-4">
+                <input type="text"
+                    [(ngModel)]="filters.keyword"
+                    name="keyword"
+                    (input)="listAccounts()" 
+                    class="form-control"
+                    placeholder="Filter accounts"/>
+            </div>
+        </div>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Account Number</th>
+                    <th>Balance</th>
+                    <th>Account Type</th>
+                    <!-- <th>Status</th> -->
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let account of accounts">
+                    <td>{{ account.accountNumber }}</td>
+                    <td>{{ account.balance }}</td>
+                    <td>{{ account.accountType }}</td>
+                    <!-- <td>{{ account.status }}</td> -->
+                    <td>
+                        <button (click)="redirectToAccountDetails($event);" value="{{ account.id }}">View Details</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</body>
+</html>
+
