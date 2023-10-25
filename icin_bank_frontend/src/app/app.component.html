@@ -7,69 +7,6 @@
 <!-- * * * * * * * to get started with your project! * * * * * * * * -->
 <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
 
-<style>
-  :host {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    font-size: 14px;
-    color: #333;
-    box-sizing: border-box;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  
-
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 8px 0;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  .spacer {
-    flex: 1;
-  }
-
-  .toolbar {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    background-color: #ffffff;
-    color: rgb(0, 0, 0);
-    font-weight: 600;
-    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  }
-
-  .toolbar a {
-    float: left;
-    color: rgb(0, 0, 0);
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-size: 14px;
-  }
-
-  .toolbar #nav-link {
-    padding-left: 50px;
-  }
-
-  .toolbar img {
-    margin: 0 16px;
-  }
-
-</style>
-
-<!-- add AI image for complaints. -->
-
 <!-- Toolbar -->
 <div class="toolbar" role="banner">
   <img
@@ -79,9 +16,14 @@
   />
   <span>&nbsp;&nbsp;ICIN BANK&nbsp;&nbsp;&nbsp;</span>
       <a class="nav-link" routerLink="/">Home</a>
-      <a class="nav-link" routerLink="ticket">My Account</a>
+      <a class="nav-link" routerLink="/">My Account</a>
     <div class="spacer"></div>
-    <a class="nav-link" routerLink="/login">Login</a>    
+    <a class="nav-link" routerLink="/login">Login&nbsp;&nbsp;&nbsp;</a>    
 </div>
 
 <router-outlet></router-outlet>
+<app-image-slider></app-image-slider>
+
+<br>
+<br>
+<br>
