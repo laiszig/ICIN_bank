@@ -9,9 +9,11 @@ import com.laiszig.icin_bank_service.repository.AccountRepository;
 import com.laiszig.icin_bank_service.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class TransactionService {
@@ -20,9 +22,12 @@ public class TransactionService {
 
     private final TransactionRepository transactionRepository;
 
-    public TransactionService(AccountRepository accountRepository, TransactionRepository transactionRepository) {
+    private final HttpSession httpSession;
+
+    public TransactionService(AccountRepository accountRepository, TransactionRepository transactionRepository, HttpSession httpSession, HttpSession httpSession1) {
         this.accountRepository = accountRepository;
         this.transactionRepository = transactionRepository;
+        this.httpSession = httpSession1;
     }
 
     public List<Transaction> getAllTransactions (){
@@ -31,7 +36,26 @@ public class TransactionService {
 
     @Transactional
     public boolean makeTransfer(TransactionRequest transactionRequest) {
-        String sourceAccountNumber = transactionRequest.getSourceAccountNumber();
+
+        Object username = httpSession.getAttribute("username");
+        List<Account> sourceAccounts = accountRepository.findAccountsByUserUsername((String) username);
+        System.out.println(sourceAccounts);
+
+        String accountType = transactionRequest.getAccountType();
+
+        String sourceAccountNumber = null;
+        for (Account account : sourceAccounts) {
+            if (account.getAccountType().equalsIgnoreCase(accountType)) {
+                sourceAccountNumber = account.getAccountNumber();
+                break;
+            }
+        }
+//        Optional<String> sourceAccountNumber = sourceAccounts.stream()
+//                .filter(account -> account.getAccountType().equalsIgnoreCase(accountType))
+//                .map(Account::getAccountNumber)
+//                .findFirst();
+//        System.out.println(sourceAccountNumber);
+
         Account sourceAccount = accountRepository.findAccountByAccountNumber(sourceAccountNumber);
         String targetAccountNumber = transactionRequest.getTargetAccountNumber();
         Account targetAccount = accountRepository.findAccountByAccountNumber(targetAccountNumber);
@@ -68,6 +92,15 @@ public class TransactionService {
 
     public boolean isAmountAvailable(double amount, double accountBalance) {
         return (accountBalance - amount) > 0;
+    }
+
+    private Account getSourceAccountByType(List<Account> accounts, String accountType) {
+        for (Account account : accounts) {
+            if (account.getAccountType().equalsIgnoreCase(accountType)) {
+                return account;
+            }
+        }
+        return null;
     }
 
 }

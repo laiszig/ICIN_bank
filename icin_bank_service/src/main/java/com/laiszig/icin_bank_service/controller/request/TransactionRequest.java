@@ -15,5 +15,7 @@ public class TransactionRequest {
 
     private String targetOwnerName;
 
+    private String accountType;
+
     private Double amount;
 }
