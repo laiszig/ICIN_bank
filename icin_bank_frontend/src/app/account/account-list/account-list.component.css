@@ -11,6 +11,29 @@ body {
     border-radius: 10px;
     box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
     text-align: center;
+    position: relative;
+}
+
+.back-button-container {
+    position: absolute;
+    left: 20px;
+    top: 20px;
+}
+
+.back-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.back-button:hover {
+    background-color: #0056b3;
 }
 
 .list-account-title {
@@ -56,3 +79,24 @@ button:hover {
     background-color: #45a049;
 }
 
+.button-container {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+
+.redirect-button {
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.redirect-button:hover {
+    background-color: #0056b3;
+}

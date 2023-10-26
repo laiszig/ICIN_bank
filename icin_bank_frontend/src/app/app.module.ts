@@ -9,8 +9,8 @@ import { AccountCreationComponent } from './account/account-creation/account-cre
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AccountListComponent } from './account/account-list/account-list.component';
-import { AdminScreenComponent } from './account/home/admin-screen/admin-screen.component';
-import { UserScreenComponent } from './account/home/user-screen/user-screen.component';
+import { AdminScreenComponent } from './home/admin-screen/admin-screen.component';
+import { UserScreenComponent } from './home/user-screen/user-screen.component';
 
 @NgModule({
   declarations: [
