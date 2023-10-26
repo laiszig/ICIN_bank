@@ -9,6 +9,7 @@ import com.laiszig.icin_bank_service.repository.AccountRepository;
 import com.laiszig.icin_bank_service.repository.TransactionRepository;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -28,7 +29,8 @@ public class TransactionService {
         return transactionRepository.findAll();
     }
 
-    public void makeTransfer(TransactionRequest transactionRequest) {
+    @Transactional
+    public boolean makeTransfer(TransactionRequest transactionRequest) {
         String sourceAccountNumber = transactionRequest.getSourceAccountNumber();
         Account sourceAccount = accountRepository.findAccountByAccountNumber(sourceAccountNumber);
         String targetAccountNumber = transactionRequest.getTargetAccountNumber();
@@ -53,6 +55,7 @@ public class TransactionService {
         updateAccountsBalance(sourceAccount, targetAccount, transactionRequest.getAmount());
 
         transactionRepository.save(transaction);
+        return false;
     }
 
     public void updateAccountsBalance(Account sourceAccount, Account targetAccount, double amount) {
