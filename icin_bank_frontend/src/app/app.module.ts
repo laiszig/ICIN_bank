@@ -6,11 +6,14 @@ import { AppComponent } from './app.component';
 import { ImageSliderComponent } from './image-slider/image-slider.component';
 import { NgImageSliderModule } from 'ng-image-slider';
 import { AccountCreationComponent } from './account/account-creation/account-creation.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { AccountListComponent } from './account/account-list/account-list.component';
 import { AdminScreenComponent } from './home/admin-screen/admin-screen.component';
 import { UserScreenComponent } from './home/user-screen/user-screen.component';
+import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
+import { SecurityInterceptorService } from './security-interceptor.service';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,8 @@ import { UserScreenComponent } from './home/user-screen/user-screen.component';
     AccountListComponent,
     AdminScreenComponent,
     UserScreenComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
@@ -28,7 +33,7 @@ import { UserScreenComponent } from './home/user-screen/user-screen.component';
     HttpClientModule,
     FormsModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS, useClass: SecurityInterceptorService, multi: true }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

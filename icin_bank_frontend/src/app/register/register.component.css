@@ -1,0 +1,71 @@
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #7f1717;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.card-container {
+    border: 1px solid grey;
+    padding: 15px;
+    background-color: #f1f1f1;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.profile-img-card {
+    max-width: 100px;
+    margin: 0 auto 20px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #7f1717;
+}
+
+input[type="username"],
+input[type="password"] {
+    width: calc(100% - 22px);
+    padding: 5px;
+    margin-bottom: 10px;
+    margin-right: 22px;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    width: calc(100% - 22px);
+    padding: 10px;
+    background-color: #d40707;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #7f1717;
+}
+
+.alert {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.alert-warning {
+    background-color: #fff3cd;
+    border: 1px solid #ffeeba;
+    color: #856404;
+}
+.alert-success {
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+}
