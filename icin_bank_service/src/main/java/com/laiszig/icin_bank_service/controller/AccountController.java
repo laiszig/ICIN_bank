@@ -24,17 +24,17 @@ public class AccountController {
         this.userService = userService;
     }
 
-    @GetMapping("/account")
+    @GetMapping("/admin/account")
     public List<Account> getAll() {
         return accountService.getAllAccounts();
     }
 
-    @PostMapping("/account/search")
+    @PostMapping("/admin/account/search")
     public Account searchAccountByNumber(@RequestBody AccountRequest accountRequest) {
         return accountService.getAccountByNumber(accountRequest.getAccountNumber());
     }
 
-    @PutMapping(value = "/account")
+    @PutMapping(value = "/admin/account")
     public ResponseEntity<?> createAccount(@RequestBody AccountRequest accountRequest) {
 
         Account account = new Account();
@@ -52,13 +52,13 @@ public class AccountController {
         return accountService.getAccount(id).orElseThrow(() -> new RuntimeException("Account not found"));
     }
 
-    @PostMapping("account/{id}/deposit")
+    @PostMapping("/user/account/{id}/deposit")
     public Account deposit(@PathVariable Long id, @RequestBody Map<String, Double> request) {
         Double amount = request.get("amount");
         return accountService.deposit(id, amount);
     }
 
-    @PostMapping("account/{id}/withdraw")
+    @PostMapping("/user/account/{id}/withdraw")
     public Account withdraw(@PathVariable Long id, @RequestBody Map<String, Double> request) {
         Double amount = request.get("amount");
         return accountService.withdraw(id, amount);

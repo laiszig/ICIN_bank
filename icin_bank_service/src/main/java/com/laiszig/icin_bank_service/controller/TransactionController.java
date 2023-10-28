@@ -19,7 +19,7 @@ public class TransactionController {
         this.transactionService = transactionService;
     }
 
-    @PostMapping("/transaction")
+    @PostMapping("/user/transaction")
     public ResponseEntity<?> makeTransfer(@RequestBody TransactionRequest transactionRequest) {
             transactionService.makeTransfer(transactionRequest);
             return new ResponseEntity<>(HttpStatus.OK);

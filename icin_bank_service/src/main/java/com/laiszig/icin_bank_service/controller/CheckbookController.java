@@ -18,24 +18,24 @@ public class CheckbookController {
         this.checkbookService = checkbookService;
     }
 
-    @GetMapping("/checkbook")
+    @GetMapping("/admin/checkbook")
     public List<Checkbook> getAll(){
         return checkbookService.getAllCheckbookRequests();
     }
 
-    @PutMapping("/checkbook/approve/{id}")
+    @PutMapping("/admin/checkbook/approve/{id}")
     public ResponseEntity<Checkbook> approveCheckbookStatus(@PathVariable Long id) {
         Checkbook updatedCheckbook = checkbookService.approveStatus(id);
         return ResponseEntity.ok(updatedCheckbook);
     }
 
-    @PutMapping("/checkbook/deny/{id}")
+    @PutMapping("/admin/checkbook/deny/{id}")
     public ResponseEntity<Checkbook> denyCheckbookStatus(@PathVariable Long id) {
         Checkbook updatedCheckbook = checkbookService.denyStatus(id);
         return ResponseEntity.ok(updatedCheckbook);
     }
 
-    @PostMapping("/checkbook")
+    @PostMapping("/user/checkbook")
     public ResponseEntity<Checkbook> createCheckbook(
             @RequestParam(name = "accountId") Long accountId) {
         Checkbook createdCheckbook = checkbookService.createCheckbookRequest(accountId);

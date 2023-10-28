@@ -16,12 +16,12 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping("/user")
+    @GetMapping("/admin/userentity")
     public List<User> getAll(){
         return userService.findAllUsers();
     }
 
-    @PostMapping("/user/{id}")
+    @PostMapping("/admin/userentity/{id}")
     public User searchUserById(@PathVariable Long id) {
         return userService.findUser(id);
     }
