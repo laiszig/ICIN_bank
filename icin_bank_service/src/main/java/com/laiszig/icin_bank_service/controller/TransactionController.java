@@ -25,7 +25,7 @@ public class TransactionController {
             return new ResponseEntity<>(HttpStatus.OK);
     }
 
-    @GetMapping("/transaction")
+    @GetMapping("/admin/transaction")
     public List<Transaction> getTransactions(){
         return transactionService.getAllTransactions();
     }

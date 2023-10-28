@@ -37,7 +37,7 @@ public class TransactionService {
     @Transactional
     public boolean makeTransfer(TransactionRequest transactionRequest) {
 
-        Object username = httpSession.getAttribute("username");
+            Object username = httpSession.getAttribute("username");
         List<Account> sourceAccounts = accountRepository.findAccountsByUserUsername((String) username);
         System.out.println(sourceAccounts);
 
@@ -50,11 +50,6 @@ public class TransactionService {
                 break;
             }
         }
-//        Optional<String> sourceAccountNumber = sourceAccounts.stream()
-//                .filter(account -> account.getAccountType().equalsIgnoreCase(accountType))
-//                .map(Account::getAccountNumber)
-//                .findFirst();
-//        System.out.println(sourceAccountNumber);
 
         Account sourceAccount = accountRepository.findAccountByAccountNumber(sourceAccountNumber);
         String targetAccountNumber = transactionRequest.getTargetAccountNumber();

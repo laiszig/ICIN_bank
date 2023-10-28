@@ -37,6 +37,8 @@ public class SecurityConfig  {
     @Autowired
     public DataSource dataSource;
 
+    public Role role;
+
     @Bean
     public UserDetailsManager users(DataSource dataSource) {
         return new JdbcUserDetailsManager(dataSource);
@@ -64,7 +66,9 @@ public class SecurityConfig  {
         httpSecurity.csrf().disable()
                 .cors().and()
                 .authorizeRequests()
-                .antMatchers("/authenticate", "/register", "/**").permitAll()
+                .antMatchers("/authenticate", "/register").permitAll()
+                .antMatchers("/admin/**").hasRole("ADMIN")
+                .antMatchers("/user/**").hasRole("USER")
                 .anyRequest().authenticated()
                 .and()
                 .exceptionHandling().authenticationEntryPoint(authenticationEntryPoint).and().sessionManagement()
