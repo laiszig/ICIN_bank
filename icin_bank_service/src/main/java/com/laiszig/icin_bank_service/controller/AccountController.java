@@ -24,7 +24,7 @@ public class AccountController {
         this.userService = userService;
     }
 
-    @GetMapping("/admin/account")
+    @GetMapping("/admin/accounts")
     public List<Account> getAll() {
         return accountService.getAllAccounts();
     }
@@ -47,7 +47,7 @@ public class AccountController {
         return new ResponseEntity<>("Account created successfully", HttpStatus.OK);
     }
 
-    @GetMapping("account/{id}")
+    @GetMapping("admin/account/{id}")
     public Account getAccount(@PathVariable Long id) {
         return accountService.getAccount(id).orElseThrow(() -> new RuntimeException("Account not found"));
     }
