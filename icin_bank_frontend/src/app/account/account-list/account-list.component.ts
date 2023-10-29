@@ -44,7 +44,15 @@ export class AccountListComponent {
       return (m.accountType.toLowerCase().includes(this.filters.keyword.toLowerCase())); 
       // || m.status.toString().toLowerCase().includes(this.filters.keyword.toLowerCase()));
     })
-  }  
+  } 
+  
+ redirectToAccountDetails(accountId: number) {
+  if (accountId) {
+    this.router.navigate(['/account', accountId]);
+  }
+}
+
+  
 
   // statusSelection = (event: any) => {
   //   const status = event.target.value;
@@ -59,10 +67,11 @@ export class AccountListComponent {
   //   }
   // }
 
-  redirectToAccountDetails(event: any) {
-    const accountId = event.target.value;
-    const url: String = "/" 
-    // + accountId;
-    this.router.navigate([url]);
-  }
+  // redirectToAccountDetails(event: any) {
+  //   const accountNumber = event.target.value;
+  //   const url: String = "/account" 
+  //   // + accountId;
+  //   this.router.navigate([url]);
+  // }
+  
 }

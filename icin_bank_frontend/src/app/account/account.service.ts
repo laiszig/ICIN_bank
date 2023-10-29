@@ -12,6 +12,8 @@ export class AccountService {
 
   constructor(private httpClient : HttpClient) { }
 
+  account: Account;
+
   createAccount(account: Account) {
     return this.httpClient.put<any>(this.url + "/account", account)
     .pipe(map(result => {
@@ -21,12 +23,11 @@ export class AccountService {
     }));
   }
 
-  //get all tickets
   getAllAccounts(): Observable<Account[]> {
-    return this.httpClient.get<Account[]>(this.url + "/account");
+    return this.httpClient.get<Account[]>(this.url + "/admin/accounts");
   }
 
-  // getTicketsByStatus(id: any): Observable<Account[]> {
-  //   return this.http.post<Account[]>(this.url + "/ticket/status", {"status" : Status})
-  // }
+  getAccountById(accountId: number): Observable<Account> {
+    return this.httpClient.get<Account>(`${this.url}/admin/account/${accountId}`);
+  }
 }

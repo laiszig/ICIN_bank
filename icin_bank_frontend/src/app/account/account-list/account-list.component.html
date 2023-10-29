@@ -39,7 +39,7 @@
                     <td>{{ account.balance }}</td>
                     <td>{{ account.accountType }}</td>
                     <td>
-                        <button (click)="redirectToAccountDetails($event);" value="{{ account.id }}">View Details</button>
+                        <button (click)="redirectToAccountDetails(account.id)">View Details</button>
                     </td>
                 </tr>
             </tbody>

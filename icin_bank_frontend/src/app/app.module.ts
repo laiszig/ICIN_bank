@@ -14,6 +14,7 @@ import { UserScreenComponent } from './home/user-screen/user-screen.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { SecurityInterceptorService } from './security-interceptor.service';
+import { AccountDetailsComponent } from './account/account-details/account-details.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { SecurityInterceptorService } from './security-interceptor.service';
     AdminScreenComponent,
     UserScreenComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    AccountDetailsComponent
   ],
   imports: [
     BrowserModule,

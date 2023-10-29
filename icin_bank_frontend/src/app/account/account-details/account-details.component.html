@@ -1,0 +1,26 @@
+<div class="container">
+    <div class="back-button-container">
+        <a href="/accounts" class="back-button">Back</a>
+    </div>
+    <div class="box">
+        <h2 class="account-details-title">Account Details</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Client</th>
+                    <th>Account Number</th>
+                    <th>Account Type</th>
+                    <th>Balance</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{ account.user.username }}</td>
+                    <td>{{ account.accountNumber }}</td>
+                    <td>{{ account.accountType }}</td>
+                    <td> $ {{ account.balance }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

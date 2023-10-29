@@ -6,10 +6,12 @@ import { AdminScreenComponent } from './home/admin-screen/admin-screen.component
 import { UserScreenComponent } from './home/user-screen/user-screen.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { AccountDetailsComponent } from './account/account-details/account-details.component';
 
 const routes: Routes = [
   {"path":"account/add", component: AccountCreationComponent},
   {"path":"accounts", component: AccountListComponent},
+  {"path":"account/:id", component: AccountDetailsComponent},
   {"path":"admin/home", component: AdminScreenComponent},
   {"path":"user/home", component: UserScreenComponent},
   {"path":"register",component:RegisterComponent},
