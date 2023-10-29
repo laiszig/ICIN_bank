@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs/internal/Observable';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,14 @@ export class AutheticationService {
     .pipe(map(user => {
         return user;
     }));   
+  }
+
+  getAccountData(userId: number): Observable<any> {
+    // Make an HTTP GET request to your API endpoint to fetch user data by ID
+    return this.httpClient.get(`http://localhost:8080/admin/userentity/${userId}`)
+    .pipe(map(user => {
+      return user;
+  })); 
   }
 
 }

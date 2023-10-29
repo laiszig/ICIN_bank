@@ -13,7 +13,8 @@ export class LoginComponent implements OnInit {
 
   form: any = {
     username: null,
-    password: null
+    password: null,
+    role: null,
   };
     loading = false;
     submitted = false;
@@ -38,7 +39,7 @@ export class LoginComponent implements OnInit {
     onSubmit() {
         this.submitted = true;
 
-        console.log("l")
+        console.log(this.form)
 
         this.loading = true;
         this.authenticationService.login(this.form.username, this.form.password)
