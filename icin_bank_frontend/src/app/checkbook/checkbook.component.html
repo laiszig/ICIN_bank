@@ -18,12 +18,18 @@
     <table>
         <thead>
             <tr>
+                <th>Account Number</th>
+                <th>Account Type</th>
+                <th>Username</th>
                 <th>Status</th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <tr *ngFor="let request of checkbookRequests">
+                <td>{{ request.account.accountNumber }}</td>
+                <td>{{ request.account.accountType }}</td>
+                <td>{{ request.account.user.username }}</td>
                 <td>{{ request.status }}</td>
                 <td>
                     <button (click)="approveRequest(request.id)">Approve</button>
@@ -32,4 +38,5 @@
             </tr>
         </tbody>
     </table>
+    
 </div>
