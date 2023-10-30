@@ -16,6 +16,7 @@ import { RegisterComponent } from './register/register.component';
 import { SecurityInterceptorService } from './security-interceptor.service';
 import { AccountDetailsComponent } from './account/account-details/account-details.component';
 import { ClientComponent } from './client/client.component';
+import { CheckbookComponent } from './checkbook/checkbook.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { ClientComponent } from './client/client.component';
     LoginComponent,
     RegisterComponent,
     AccountDetailsComponent,
-    ClientComponent
+    ClientComponent,
+    CheckbookComponent
   ],
   imports: [
     BrowserModule,

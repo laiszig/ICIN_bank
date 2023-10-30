@@ -36,7 +36,7 @@
             <tbody>
                 <tr *ngFor="let account of accounts">
                     <td>{{ account.accountNumber }}</td>
-                    <td>{{ account.balance }}</td>
+                    <td>$ {{ account.balance }}</td>
                     <td>{{ account.accountType }}</td>
                     <td>
                         <button (click)="redirectToAccountDetails(account.id)">View Details</button>

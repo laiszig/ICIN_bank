@@ -14,8 +14,9 @@
         <div class="options">
             <a class="nav-link" routerLink="/transaction/deposit-withdraw">Deposit/Withdraw</a> <br>
             <a class="nav-link" routerLink="/transaction/transfer">Transfer</a> <br>
-            <a class="nav-link" routerLink="/checkbook/request">Request Checkbook</a> <br>
+            <button class="action-button" (click)="requestCheckbook()">Request Checkbook</button> <br>
         </div>
-    </div>
+    </div>    
 </body>
 </html>
+<!-- <button class="btn btn-primary" (click)="createCheckbookRequest()">Submit Request</button> -->

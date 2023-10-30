@@ -23,4 +23,9 @@ export class CheckbookService {
   denyCheckbookStatus(id: number): Observable<Checkbook> {
     return this.http.put<Checkbook>(`${this.baseUrl}/deny/${id}`, {});
   }
+
+  createCheckbookRequest(accountId: number): Observable<Checkbook> {
+    return this.http.post<Checkbook>(`${this.baseUrl}`, { accountId });
+  }
+  
 }
