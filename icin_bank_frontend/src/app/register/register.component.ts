@@ -5,7 +5,10 @@ import { first } from 'rxjs/operators';
 
 import { AutheticationService } from '../authetication.service';
 
-@Component({templateUrl: 'register.component.html'})
+@Component({
+    templateUrl: 'register.component.html',
+    styleUrls:['register.component.css']})
+
 export class RegisterComponent implements OnInit {
 
   form: any = {
@@ -30,8 +33,6 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
     }
 
-
-
     onSubmit() {
         this.submitted = true;
 
@@ -40,7 +41,7 @@ export class RegisterComponent implements OnInit {
             .pipe(first())
             .subscribe(
                 data => {
-                    this.router.navigate(["/login"]);
+                    this.router.navigate(["/admin/home"]);
                 },
                 error => {
  

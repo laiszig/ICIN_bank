@@ -18,11 +18,8 @@ export class AccountCreationComponent {
   account: Account[];
 
     form: any = {
-      // accountNumber: null,
-      // balance: null,
-      // accountType: null,
-      // status: null,
-      // user:null
+      accountType: null,
+      user:null
     };
 
     ngOnInit(): void {
@@ -35,7 +32,7 @@ export class AccountCreationComponent {
     .subscribe(
       data => {
         console.log("Processed")
-        this.router.navigate(['/account']);
+        this.router.navigate(['/accounts']);
       },
       error => {
         console.log("Error processing")

@@ -15,7 +15,7 @@ export class AccountService {
   account: Account;
 
   createAccount(account: Account) {
-    return this.httpClient.put<any>(this.url + "/account", account)
+    return this.httpClient.put<any>(this.url + "/admin/account", account)
     .pipe(map(result => {
       console.log("SERVICE LOG PIPE")
       console.log(result)

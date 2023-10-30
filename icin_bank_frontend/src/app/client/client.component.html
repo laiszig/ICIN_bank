@@ -1,0 +1,39 @@
+<br>
+<br>
+<br>
+<br>
+<a class="nav-link" routerLink="/register">Register Client</a> <br>
+<br>
+<h2 class="list-client-title">Clients</h2>
+
+<div class="row">
+  <div class="col-md-4">
+      <input type="text"
+          [(ngModel)]="filters.keyword"
+          name="keyword"
+          (input)="listClients()" 
+          class="form-control"
+          placeholder="Filter clients"/>
+  </div>
+</div>
+<br>
+<table>
+  <thead>
+    <tr>
+      <th>Client Name</th>
+      <th>Email</th>
+      <th>Description</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{ user.username }}</td>
+      <td>{{ user.email }}</td>
+      <!-- <td>{{ user.enabled }}</td> -->
+      <td>
+        <!-- <button (click)="redirectToTicketDetails($event);" value="{{ ticket.id }}">View Details</button> -->
+      </td>
+    </tr>
+  </tbody>
+</table>

@@ -21,7 +21,6 @@ export class AutheticationService {
     }));   
   }
 
-
   register(username: String, password: String) {
     return this.httpClient.post<any>("http://localhost:8080/register", { username, password })
     .pipe(map(user => {
@@ -30,7 +29,6 @@ export class AutheticationService {
   }
 
   getAccountData(userId: number): Observable<any> {
-    // Make an HTTP GET request to your API endpoint to fetch user data by ID
     return this.httpClient.get(`http://localhost:8080/admin/userentity/${userId}`)
     .pipe(map(user => {
       return user;
