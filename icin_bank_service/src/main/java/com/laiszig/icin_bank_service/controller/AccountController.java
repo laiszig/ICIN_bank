@@ -29,11 +29,6 @@ public class AccountController {
         return accountService.getAllAccounts();
     }
 
-    @PostMapping("/admin/account/search")
-    public Account searchAccountByNumber(@RequestBody AccountRequest accountRequest) {
-        return accountService.getAccountByNumber(accountRequest.getAccountNumber());
-    }
-
     @PutMapping(value = "/admin/account")
     public ResponseEntity<?> createAccount(@RequestBody AccountRequest accountRequest) {
 
