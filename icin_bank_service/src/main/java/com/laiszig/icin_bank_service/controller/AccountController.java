@@ -59,7 +59,7 @@ public class AccountController {
         return accountService.withdraw(id, amount);
     }
 
-    @GetMapping("/account/balance")
+    @GetMapping("/user/account/balance")
     public Double getCheckingBalance() {
         return accountService.getCheckingBalance();
     }

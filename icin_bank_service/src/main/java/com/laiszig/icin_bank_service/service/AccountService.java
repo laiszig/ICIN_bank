@@ -3,6 +3,7 @@ package com.laiszig.icin_bank_service.service;
 import com.laiszig.icin_bank_service.entity.Account;
 import com.laiszig.icin_bank_service.repository.AccountRepository;
 import com.laiszig.icin_bank_service.utils.CodeGenerator;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
@@ -53,14 +54,24 @@ public class AccountService {
         return accountRepository.save(account);
     }
 
-    public Double getCheckingBalance () {
+    public Double getCheckingBalance() {
 
-        Object username = httpSession.getAttribute("username");
+
+        var authenticationContext = SecurityContextHolder.getContext().getAuthentication();
+        var username = authenticationContext.getName();
+        System.out.println(username);
+        if (username == null) {
+            // Handle the case where the username is null (not authenticated)
+            throw new RuntimeException("User not authenticated");
+        }
+
         List<Account> sourceAccounts = accountRepository.findAccountsByUserUsername((String) username);
-        System.out.println(sourceAccounts);
+        if (sourceAccounts == null || sourceAccounts.isEmpty()) {
+            // Handle the case where no accounts are found for the user
+            throw new RuntimeException("No accounts found for the user");
+        }
 
         String accountType = "CHECKING";
-
         String sourceAccountNumber = null;
         for (Account userAccount : sourceAccounts) {
             if (userAccount.getAccountType().equalsIgnoreCase(accountType)) {
@@ -69,8 +80,18 @@ public class AccountService {
             }
         }
 
-        Account sourceAccount = accountRepository.findAccountByAccountNumber(sourceAccountNumber);
-        return sourceAccount.getBalance();
+        if (sourceAccountNumber != null) {
+            Account sourceAccount = accountRepository.findAccountByAccountNumber(sourceAccountNumber);
+            if (sourceAccount != null) {
+                return sourceAccount.getBalance();
+            } else {
+                // Handle the case where sourceAccount is null (not found in the repository)
+                throw new RuntimeException("Source account not found");
+            }
+        } else {
+            // Handle the case where sourceAccountNumber is null (no matching account type)
+            throw new RuntimeException("No checking account found for the user");
+        }
     }
 
 }
