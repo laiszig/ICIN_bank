@@ -9,6 +9,7 @@ import { RegisterComponent } from './register/register.component';
 import { AccountDetailsComponent } from './account/account-details/account-details.component';
 import { ClientComponent } from './client/client.component';
 import { CheckbookComponent } from './checkbook/checkbook.component';
+import { MoveFundsComponent } from './account/move-funds/move-funds.component';
 
 const routes: Routes = [
   {"path":"account/add", component: AccountCreationComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {"path":"register",component:RegisterComponent},
   {"path":"login",component:LoginComponent},
   {"path":"clients", component:ClientComponent},
-  {"path":"checkbook", component:CheckbookComponent}
+  {"path":"checkbook", component:CheckbookComponent},
+  {"path":"move", component:MoveFundsComponent}
 ];
 
 @NgModule({

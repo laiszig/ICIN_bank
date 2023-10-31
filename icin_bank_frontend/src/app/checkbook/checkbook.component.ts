@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Checkbook } from './checkbook';
+import { Checkbook } from './Checkbook';
 import { CheckbookService } from './checkbook.service';
 
 @Component({

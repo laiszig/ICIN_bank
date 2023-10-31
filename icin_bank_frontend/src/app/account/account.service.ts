@@ -16,11 +16,7 @@ export class AccountService {
 
   createAccount(account: Account) {
     return this.httpClient.put<any>(this.url + "/admin/account", account)
-    .pipe(map(result => {
-      console.log("SERVICE LOG PIPE")
-      console.log(result)
-      return result;
-    }));
+    .pipe(map(result => { return result }));
   }
 
   getAllAccounts(): Observable<Account[]> {
@@ -29,5 +25,19 @@ export class AccountService {
 
   getAccountById(accountId: number): Observable<Account> {
     return this.httpClient.get<Account>(`${this.url}/admin/account/${accountId}`);
+  }
+
+  deposit(id: number, amount: number): Observable<Account> {
+    const depositUrl = `${this.url}/user/account/${id}/deposit`;
+    return this.httpClient.post<Account>(depositUrl, { amount });
+  }
+
+  withdraw(id: number, amount: number): Observable<Account> {
+    const withdrawUrl = `${this.url}/user/account/${id}/withdraw`;
+    return this.httpClient.post<Account>(withdrawUrl, { amount });
+  }
+
+  getCheckingBalance(): Observable<number> {
+    return this.httpClient.get<number>(this.url + "/user/account/balance");
   }
 }

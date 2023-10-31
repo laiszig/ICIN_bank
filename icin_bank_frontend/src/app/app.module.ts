@@ -17,6 +17,7 @@ import { SecurityInterceptorService } from './security-interceptor.service';
 import { AccountDetailsComponent } from './account/account-details/account-details.component';
 import { ClientComponent } from './client/client.component';
 import { CheckbookComponent } from './checkbook/checkbook.component';
+import { MoveFundsComponent } from './account/move-funds/move-funds.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { CheckbookComponent } from './checkbook/checkbook.component';
     RegisterComponent,
     AccountDetailsComponent,
     ClientComponent,
-    CheckbookComponent
+    CheckbookComponent,
+    MoveFundsComponent
   ],
   imports: [
     BrowserModule,
