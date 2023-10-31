@@ -7,6 +7,7 @@ import com.laiszig.icin_bank_service.entity.User;
 import com.laiszig.icin_bank_service.repository.AccountRepository;
 import com.laiszig.icin_bank_service.repository.CheckbookRepository;
 import org.hibernate.annotations.Check;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import javax.persistence.EntityNotFoundException;
@@ -46,13 +47,18 @@ public class CheckbookService {
         return checkbookRepository.save(checkbook);
     }
 
-    public Checkbook createCheckbookRequest(Long accountId) {
-        if (accountId == null) {
+    public Checkbook createCheckbookRequest() {
+        String username = SecurityContextHolder.getContext().getAuthentication().getName();
+        var accountOptional = accountRepository.findAccountsByUserUsername(username)
+                .stream().filter(c -> "CHECKING".equals(c.getAccountType()))
+                .findFirst();
+
+        if(accountOptional.isEmpty() || accountOptional.get().getAccountNumber() == null) {
             throw new IllegalArgumentException("Account ID is required");
         }
 
-        Account account = accountRepository.findById(accountId)
-                .orElseThrow(() -> new EntityNotFoundException("Account not found with ID: " + accountId));
+        Account account = accountRepository.findById(accountOptional.get().getId())
+                .orElseThrow(() -> new EntityNotFoundException("Account not found with ID: " + accountOptional.get().getId()));
 
         if (!Objects.equals(account.getAccountType(), "CHECKING")) {
             throw new IllegalArgumentException("Account type must be CHECKING");
@@ -64,6 +70,5 @@ public class CheckbookService {
 
         return checkbookRepository.save(checkbook);
     }
-
 
 }

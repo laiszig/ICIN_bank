@@ -36,9 +36,8 @@ public class CheckbookController {
     }
 
     @PostMapping("/user/checkbook")
-    public ResponseEntity<Checkbook> createCheckbook(
-            @RequestParam(name = "accountId") Long accountId) {
-        Checkbook createdCheckbook = checkbookService.createCheckbookRequest(accountId);
+    public ResponseEntity<Checkbook> createCheckbook() {
+        Checkbook createdCheckbook = checkbookService.createCheckbookRequest();
         return ResponseEntity.ok(createdCheckbook);
     }
 
