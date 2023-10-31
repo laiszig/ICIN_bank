@@ -5,6 +5,7 @@ import com.laiszig.icin_bank_service.repository.AccountRepository;
 import com.laiszig.icin_bank_service.utils.CodeGenerator;
 import org.springframework.stereotype.Service;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 import java.util.Optional;
 
@@ -12,9 +13,11 @@ import java.util.Optional;
 public class AccountService {
 
     private final AccountRepository accountRepository;
+    private final HttpSession httpSession;
 
-    public AccountService(AccountRepository accountRepository) {
+    public AccountService(AccountRepository accountRepository, HttpSession httpSession) {
         this.accountRepository = accountRepository;
+        this.httpSession = httpSession;
     }
 
     public List<Account> getAllAccounts(){
@@ -48,6 +51,26 @@ public class AccountService {
         }
         account.setBalance(account.getBalance() - amount);
         return accountRepository.save(account);
+    }
+
+    public Double getCheckingBalance () {
+
+        Object username = httpSession.getAttribute("username");
+        List<Account> sourceAccounts = accountRepository.findAccountsByUserUsername((String) username);
+        System.out.println(sourceAccounts);
+
+        String accountType = "CHECKING";
+
+        String sourceAccountNumber = null;
+        for (Account userAccount : sourceAccounts) {
+            if (userAccount.getAccountType().equalsIgnoreCase(accountType)) {
+                sourceAccountNumber = userAccount.getAccountNumber();
+                break;
+            }
+        }
+
+        Account sourceAccount = accountRepository.findAccountByAccountNumber(sourceAccountNumber);
+        return sourceAccount.getBalance();
     }
 
 }
