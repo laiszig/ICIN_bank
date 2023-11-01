@@ -47,16 +47,16 @@ public class AccountController {
         return accountService.getAccount(id).orElseThrow(() -> new RuntimeException("Account not found"));
     }
 
-    @PostMapping("/user/account/{id}/deposit")
-    public Account deposit(@PathVariable Long id, @RequestBody Map<String, Double> request) {
+    @PostMapping("/user/account/deposit")
+    public Account deposit(@RequestBody Map<String, Double> request) {
         Double amount = request.get("amount");
-        return accountService.deposit(id, amount);
+        return accountService.deposit(amount);
     }
 
-    @PostMapping("/user/account/{id}/withdraw")
-    public Account withdraw(@PathVariable Long id, @RequestBody Map<String, Double> request) {
+    @PostMapping("/user/account/withdraw")
+    public Account withdraw(@RequestBody Map<String, Double> request) {
         Double amount = request.get("amount");
-        return accountService.withdraw(id, amount);
+        return accountService.withdraw(amount);
     }
 
     @GetMapping("/user/account/balance")
