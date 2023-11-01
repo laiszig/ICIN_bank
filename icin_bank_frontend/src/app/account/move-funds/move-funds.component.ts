@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Account } from '../Account';
 import { AccountService } from '../account.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-move-funds',
@@ -9,31 +10,39 @@ import { AccountService } from '../account.service';
 })
 export class MoveFundsComponent {
 
-  account: Account;
-  
-  constructor(private accountService: AccountService) { }
+  depositAmount: number;
+  withdrawAmount: number;
 
-  deposit(id: number, amount: number): void {
-    this.accountService.deposit(id, amount).subscribe(
+  constructor(
+    private accountService: AccountService,
+    private router: Router) { }
+
+  onSubmit(action: string): void {
+    if (action === 'deposit') {
+      this.deposit();
+    } else if (action === 'withdraw') {
+      this.withdraw();
+    }
+    this.router.navigate(['/user/home']);
+  }
+
+  deposit(): void {
+    this.accountService.deposit(this.depositAmount).subscribe(
       (account: Account) => {
-        // Handle successful deposit, for example, update the account details in the UI
         console.log('Deposit successful:', account);
       },
       (error) => {
-        // Handle deposit error, show error message to the user
         console.error('Deposit error:', error);
       }
     );
   }
 
-  withdraw(id: number, amount: number): void {
-    this.accountService.withdraw(id, amount).subscribe(
+  withdraw(): void {
+    this.accountService.withdraw(this.withdrawAmount).subscribe(
       (account: Account) => {
-        // Handle successful withdrawal, for example, update the account details in the UI
         console.log('Withdrawal successful:', account);
       },
       (error) => {
-        // Handle withdrawal error, show error message to the user
         console.error('Withdrawal error:', error);
       }
     );

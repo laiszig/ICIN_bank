@@ -32,7 +32,7 @@ import { MoveFundsComponent } from './account/move-funds/move-funds.component';
     AccountDetailsComponent,
     ClientComponent,
     CheckbookComponent,
-    MoveFundsComponent
+    MoveFundsComponent,
   ],
   imports: [
     BrowserModule,

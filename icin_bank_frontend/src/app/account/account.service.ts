@@ -27,13 +27,13 @@ export class AccountService {
     return this.httpClient.get<Account>(`${this.url}/admin/account/${accountId}`);
   }
 
-  deposit(id: number, amount: number): Observable<Account> {
-    const depositUrl = `${this.url}/user/account/${id}/deposit`;
+  deposit(amount: number): Observable<Account> {
+    const depositUrl = `${this.url}/user/account/deposit`;
     return this.httpClient.post<Account>(depositUrl, { amount });
   }
 
-  withdraw(id: number, amount: number): Observable<Account> {
-    const withdrawUrl = `${this.url}/user/account/${id}/withdraw`;
+  withdraw(amount: number): Observable<Account> {
+    const withdrawUrl = `${this.url}/user/account/withdraw`;
     return this.httpClient.post<Account>(withdrawUrl, { amount });
   }
 
