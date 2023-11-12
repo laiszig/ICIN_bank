@@ -1,4 +1,4 @@
-# Kitchen Story
+# ICIN Bank
 
 ![GitHub repo size](https://img.shields.io/github/repo-size/laiszig/kitchen_story?style=for-the-badge)
 ![GitHub language count](https://img.shields.io/github/languages/count/laiszig/kitchen_story?style=for-the-badge)
